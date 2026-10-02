@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff6e9">
+  <meta name="description" content="A happy Boyfriend's Day card and a little apology note for Harshiee.">
+  <title>Happy Boyfriend's Day & I'm Sorry, Harshiee!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Gochi+Hand&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff8ee;
+      --ink: #28332c;
+      --coral: #ed6e5c;
+      --pink: #f4b8ad;
+      --butter: #f7d96c;
+      --blue: #9bcfe0;
+      --leaf: #a9c58d;
+      --white: #fffdf8;
+      --line: rgba(40, 51, 44, 0.18);
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+      --hand: "Gochi Hand", "Comic Sans MS", cursive;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image: radial-gradient(rgba(40, 51, 44, .11) .7px, transparent .7px);
+      background-size: 14px 14px;
+      font-family: var(--sans);
+    }
+    button { font: inherit; }
+    a { color: inherit; }
+
+    .page-shell { overflow: hidden; }
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 19px 34px;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .topline-mark { display: flex; align-items: center; gap: 9px; }
+    .topline-heart { color: var(--coral); font-size: 18px; }
+    .topline-date { color: #687166; }
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(420px, .95fr);
+      align-items: center;
+      gap: clamp(34px, 6vw, 92px);
+      max-width: 1240px;
+      min-height: 610px;
+      margin: 0 auto;
+      padding: 76px 42px 82px;
+    }
+    .hero-copy { position: relative; z-index: 2; max-width: 580px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 20px;
+      padding: 8px 13px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      background: var(--butter);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      transform: rotate(-2deg);
+    }
+    h1 {
+      max-width: 650px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(54px, 7.1vw, 91px);
+      font-weight: 600;
+      line-height: .97;
+    }
+    h1 .happy { display: block; }
+    h1 .boyfriends { display: block; color: var(--coral); font-style: italic; }
+    h1 .day { display: block; }
+    .hero-name {
+      display: inline-block;
+      margin: 17px 0 0;
+      color: #55734d;
+      font-family: var(--hand);
+      font-size: 34px;
+      transform: rotate(-3deg);
+    }
+    .hero-note {
+      max-width: 390px;
+      margin: 21px 0 18px;
+      color: #5e665d;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    .hero-reminder {
+      max-width: 390px;
+      margin: 0 0 22px;
+      color: #5d695f;
+      font-family: var(--hand);
+      font-size: 22px;
+      line-height: 1.45;
+    }
+    .letter-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      min-height: 52px;
+      padding: 0 21px;
+      border: 1.5px solid var(--ink);
+      border-radius: 4px;
+      background: var(--coral);
+      box-shadow: 4px 4px 0 var(--ink);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .letter-link:hover { box-shadow: 2px 2px 0 var(--ink); transform: translate(2px, 2px); }
+    .letter-link svg { width: 19px; height: 19px; }
+    .scribble {
+      position: absolute;
+      color: var(--coral);
+      font-family: var(--hand);
+      pointer-events: none;
+    }
+    .scribble-one { top: 5px; right: 26px; font-size: 37px; transform: rotate(12deg); }
+    .scribble-two { right: 18px; bottom: 8px; color: #719163; font-size: 23px; transform: rotate(-8deg); }
+
+    .hero-board {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.12fr .88fr;
+      grid-template-rows: 205px 205px;
+      gap: 17px;
+      min-height: 427px;
+      padding: 13px;
+      border: 1.5px solid var(--ink);
+      background: #f6d86f;
+      box-shadow: 8px 8px 0 var(--ink);
+      transform: rotate(1deg);
+    }
+    .hero-photo {
+      position: relative;
+      min-width: 0;
+      margin: 0;
+      padding: 8px 8px 26px;
+      border: 1px solid rgba(40, 51, 44, .65);
+      background: var(--white);
+      box-shadow: 2px 3px 0 rgba(40, 51, 44, .18);
+    }
+    .hero-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo-main { grid-row: 1 / 3; transform: rotate(-2deg); }
+    .hero-photo-top { transform: rotate(2deg); }
+    .hero-photo-bottom { transform: rotate(-1deg); }
+    .hero-photo-main img { object-position: center 43%; }
+    .photo-caption {
+      position: absolute;
+      right: 0;
+      bottom: 3px;
+      left: 0;
+      color: #545b51;
+      font-family: var(--hand);
+      font-size: 16px;
+      text-align: center;
+    }
+    .tape {
+      position: absolute;
+      z-index: 2;
+      top: -11px;
+      left: 38%;
+      width: 62px;
+      height: 21px;
+      background: rgba(238, 125, 111, .72);
+      transform: rotate(-7deg);
+    }
+    .board-sticker {
+      position: absolute;
+      z-index: 3;
+      right: -22px;
+      bottom: -28px;
+      display: grid;
+      width: 80px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      background: var(--blue);
+      font-family: var(--hand);
+      font-size: 17px;
+      line-height: 1.05;
+      text-align: center;
+      transform: rotate(9deg);
+    }
+
+    .memory-section {
+      position: relative;
+      padding: 84px max(30px, calc((100vw - 1130px) / 2)) 100px;
+      border-top: 1px solid var(--line);
+      background: #f6c8bd;
+    }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .section-kicker {
+      margin: 0 0 9px;
+      color: #725f52;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 58px);
+      font-weight: 600;
+      line-height: 1.08;
+    }
+    .heading-doodle { color: var(--coral); font-family: var(--hand); font-size: 25px; transform: rotate(-5deg); }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      align-items: start;
+      gap: 30px 23px;
+    }
+    .memory {
+      position: relative;
+      margin: 0;
+      padding: 9px 9px 35px;
+      border: 1px solid rgba(40, 51, 44, .65);
+      background: var(--white);
+      box-shadow: 3px 4px 0 rgba(40, 51, 44, .2);
+      transition: transform .25s ease;
+    }
+    .memory:nth-child(4n + 1) { transform: rotate(-2deg); }
+    .memory:nth-child(4n + 2) { margin-top: 16px; transform: rotate(1.5deg); }
+    .memory:nth-child(4n + 3) { transform: rotate(-1deg); }
+    .memory:nth-child(4n) { margin-top: 22px; transform: rotate(2deg); }
+    .memory:hover { z-index: 1; transform: translateY(-5px) rotate(0); }
+    .memory-button {
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+    }
+    .memory img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .memory figcaption {
+      position: absolute;
+      right: 0;
+      bottom: 7px;
+      left: 0;
+      color: #4c554b;
+      font-family: var(--hand);
+      font-size: 18px;
+      text-align: center;
+    }
+    .memory:nth-child(3n) img { aspect-ratio: 1 / 1; }
+    .memory:nth-child(5n) img { aspect-ratio: 3 / 4; }
+
+    .letter-section {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(300px, 1fr);
+      align-items: center;
+      gap: 58px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 105px 36px 110px;
+    }
+    .letter-intro p:last-child { max-width: 410px; color: #62695f; font-size: 15px; line-height: 1.7; }
+    .envelope-wrap { display: grid; justify-items: center; padding: 22px 15px; }
+    .envelope {
+      position: relative;
+      display: grid;
+      width: min(100%, 430px);
+      min-height: 235px;
+      place-items: center;
+      border: 1.5px solid var(--ink);
+      background: var(--blue);
+      box-shadow: 7px 7px 0 var(--ink);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+    .envelope::before, .envelope::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 67%;
+      content: "";
+      pointer-events: none;
+    }
+    .envelope::before {
+      background: #7fbbcf;
+      clip-path: polygon(0 0, 50% 65%, 100% 0, 100% 100%, 0 100%);
+    }
+    .envelope::after {
+      background: #a2d2df;
+      clip-path: polygon(0 100%, 50% 27%, 100% 100%);
+    }
+    .envelope-note {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 76px;
+      aspect-ratio: 1;
+      place-items: center;
+      margin-top: 23px;
+      border: 1.5px solid var(--ink);
+      border-radius: 50%;
+      background: var(--coral);
+      color: var(--white);
+      font-family: var(--hand);
+      font-size: 27px;
+      transform: rotate(-8deg);
+    }
+    .open-letter {
+      position: absolute;
+      z-index: 2;
+      right: 0;
+      bottom: -22px;
+      left: 0;
+      width: fit-content;
+      min-height: 47px;
+      margin: auto;
+      padding: 0 19px;
+      border: 1.5px solid var(--ink);
+      border-radius: 3px;
+      background: var(--butter);
+      box-shadow: 3px 3px 0 var(--ink);
+      color: var(--ink);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .open-letter:hover { box-shadow: 1px 1px 0 var(--ink); transform: translate(2px, 2px); }
+    .footer {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      color: #677064;
+      font-family: var(--hand);
+      font-size: 19px;
+    }
+
+    dialog {
+      width: min(92vw, 620px);
+      max-height: min(88vh, 850px);
+      padding: 0;
+      overflow: auto;
+      border: 1.5px solid var(--ink);
+      background: transparent;
+      box-shadow: 9px 9px 0 rgba(40, 51, 44, .8);
+    }
+    dialog::backdrop { background: rgba(38, 45, 37, .62); backdrop-filter: blur(3px); }
+    .letter-paper {
+      position: relative;
+      padding: clamp(28px, 6vw, 56px);
+      background-color: #fffaf0;
+      background-image: repeating-linear-gradient(transparent 0 31px, rgba(96, 123, 145, .17) 32px 33px);
+    }
+    .letter-paper::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 39px;
+      width: 1px;
+      background: rgba(237, 110, 92, .38);
+      content: "";
+    }
+    .letter-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 25px;
+    }
+    .letter-top p { margin: 0; color: var(--coral); font-family: var(--hand); font-size: 24px; }
+    .close-letter, .close-photo {
+      display: grid;
+      width: 38px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: var(--butter);
+      color: var(--ink);
+      font-size: 22px;
+      cursor: pointer;
+    }
+    .letter-paper h2 { margin: 0 0 20px; color: #55734d; font-family: var(--hand); font-size: clamp(32px, 7vw, 44px); }
+    .letter-reminder {
+      margin: 0 0 18px;
+      color: #5d695f;
+      font-family: var(--hand);
+      font-size: 22px;
+      line-height: 1.5;
+    }
+    .letter-body {
+      color: #384239;
+      font-family: var(--hand);
+      font-size: 22px;
+      line-height: 1.52;
+    }
+    .letter-body p { margin: 0 0 15px; }
+    .letter-signoff { margin-top: 25px !important; color: var(--coral); text-align: right; }
+    .photo-dialog { width: min(92vw, 800px); border: 8px solid var(--white); background: var(--white); }
+    .photo-dialog img { display: block; max-width: 100%; max-height: 78vh; margin: auto; object-fit: contain; }
+    .photo-dialog .close-photo { position: absolute; top: 10px; right: 10px; z-index: 2; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr minmax(320px, .9fr); gap: 30px; padding-right: 30px; padding-left: 30px; }
+      .hero-board { grid-template-rows: 170px 170px; min-height: 357px; gap: 12px; }
+      .photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+      .topline { flex-wrap: wrap; gap: 10px; padding: 15px 19px; font-size: 10px; }
+      .topline-date { margin-left: auto; }
+      .hero { grid-template-columns: 1fr; gap: 42px; min-height: auto; padding: 54px 24px 75px; }
+      .hero-copy { max-width: 520px; }
+      h1 { font-size: clamp(58px, 13vw, 82px); }
+      .hero-name { font-size: 29px; }
+      .hero-note { max-width: 350px; font-size: 15px; }
+      .scribble-one { top: -31px; right: 3px; }
+      .hero-board { width: min(100%, 480px); margin: 0 auto; grid-template-rows: minmax(155px, 46vw) minmax(155px, 46vw); min-height: auto; }
+      .board-sticker { right: -9px; bottom: -30px; width: 70px; }
+      .memory-section { padding: 66px 23px 78px; }
+      .section-heading { align-items: start; margin-bottom: 27px; }
+      .heading-doodle { max-width: 100px; text-align: right; }
+      .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 21px 15px; }
+      .memory { padding: 7px 7px 31px; }
+      .memory:nth-child(n) { margin-top: 0; }
+      .memory:nth-child(even) { margin-top: 17px; }
+      .memory figcaption { bottom: 5px; font-size: 16px; }
+      .letter-section { grid-template-columns: 1fr; gap: 24px; padding: 74px 25px 85px; }
+      .letter-intro p:last-child { margin-bottom: 0; }
+      .envelope-wrap { padding: 20px 8px 26px; }
+      .envelope { min-height: 205px; }
+      .letter-paper::before { left: 25px; }
+      .letter-body { font-size: 20px; }
+    }
+    @media (max-width: 380px) {
+      .topline-date { font-size: 9px; }
+      .hero { padding-right: 18px; padding-left: 18px; }
+      .photo-grid { gap: 18px 11px; }
+      .memory img { aspect-ratio: 3 / 4; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topline">
+      <div class="topline-mark"><span class="topline-heart" aria-hidden="true">♥</span><span>a little love scrapbook</span></div>
+      <span class="topline-date">made just for you · october 3</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <span class="eyebrow">for my favorite human <span aria-hidden="true">✳</span></span>
+          <h1 id="page-title"><span class="happy">Happy</span><span class="boyfriends">Boyfriend's</span><span class="day">Day!</span></h1>
+          <p class="hero-name">Harshiee, my love</p>
+          <p class="hero-note">A tiny corner of the internet for my favorite person, my safest hug, and my very best friend.</p>
+          <p class="hero-reminder">Open this letter for all the 99% good memories we have created.</p>
+          <a class="letter-link" href="#love-note">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6.5h18v12H3zM3.5 7l8.5 7 8.5-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            A little note for you
+          </a>
+          <span class="scribble scribble-one" aria-hidden="true">♡</span>
+          <span class="scribble scribble-two" aria-hidden="true">you + me, always</span>
+        </div>
+
+        <div class="hero-board" aria-label="A few favorite photos together">
+          <figure class="hero-photo hero-photo-main">
+            <span class="tape" aria-hidden="true"></span>
+            <img src="boyfriend-day-memory.jpeg" alt="A mirror selfie together" fetchpriority="high">
+            <figcaption class="photo-caption">my favorite kind of day</figcaption>
+          </figure>
+          <figure class="hero-photo hero-photo-top">
+            <img src="WhatsApp Image 2026-10-01 at 9.03.58 PM (1).jpeg" alt="A silly close-up selfie of the two of you" loading="eager">
+            <figcaption class="photo-caption">my silly boy</figcaption>
+          </figure>
+          <figure class="hero-photo hero-photo-bottom">
+            <img src="WhatsApp Image 2026-10-01 at 9.04.00 PM (2).jpeg" alt="A sweet kiss in the garden" loading="eager">
+            <figcaption class="photo-caption">kiss thief!</figcaption>
+          </figure>
+          <span class="board-sticker" aria-hidden="true">best<br>friends<br>forever</span>
+        </div>
+      </section>
+
+      <section class="memory-section" aria-labelledby="memories-title">
+        <div class="section-heading reveal">
+          <div>
+            <p class="section-kicker">little moments, big love</p>
+            <h2 id="memories-title">Us, being us.</h2>
+          </div>
+          <span class="heading-doodle" aria-hidden="true">kept close to my heart ♥</span>
+        </div>
+        <div class="photo-grid" id="photo-grid" aria-label="Photo memories together"></div>
+      </section>
+
+      <section class="letter-section" id="love-note" aria-labelledby="letter-heading">
+        <div class="letter-intro reveal">
+          <p class="section-kicker">a happy Boyfriend's Day + sorry note</p>
+          <h2 id="letter-heading">A little sorry,<br>a lot of love.</h2>
+          <p>For Harsh: a Boyfriend's Day wish, and everything I want you to know.</p>
+        </div>
+        <div class="envelope-wrap reveal">
+          <div class="envelope" aria-hidden="true"><span class="envelope-note">to<br>Harshiee</span></div>
+          <button class="open-letter" id="open-letter" type="button">Open your letter <span aria-hidden="true">♡</span></button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">made with all my love, just for you ♥</footer>
+  </div>
+
+  <dialog id="letter-dialog" aria-labelledby="letter-title">
+    <article class="letter-paper">
+      <div class="letter-top">
+        <p>Happy Boyfriend's Day · and I'm sorry, Harsh</p>
+        <button class="close-letter" type="button" aria-label="Close letter">×</button>
+      </div>
+      <h2 id="letter-title">Harsh yaar,</h2>
+      <div class="letter-body">
+        <p>Mujhe nahi pata ye kya ho raha hai, kisi ki nazar lagi hai kya? Ye sab baatein mere liye value nahi karti hain yaar. Main pyaar karti hoon aapse, aur mere pyaar karne ki wajah, mere pyaar ka source, aapka pyaar hai yaar. Mujhe aapke saath rehna hai, Harsh. Kuch nahi rakha yaar duniya mein is sab mein. Aapka pyaar kahan se laungi yaar? Main aapki aankhein kaise laungi, ye kahan se laungi yaar?</p>
+        <p>Harsh, mujhe maaf kar do yaar. Haath jod rahi hoon, aage se kabhi nahi niklega mere muh se kuch. Mere paas koi nahi hai yaar aapke alava, aur hum saath mein pyare lagte hain yaar. Harsh, please nikal do yaar, mujhe aapke saath rehna hai.</p>
+        <p>Bas ye baat nahi hai: aap sachchi sabse achhe boyfriend ho, aur aap bahut saara pyaar deserve karte ho yaar. Aapka poora haq hai mujhe chhod dene ka, kabhi bhi kuch kehne layak nahi bachi hoon main. Bas main aapse bahut pyaar karti hoon, aur aapko chhodkar kabhi kahin nahi jaungi.</p>
+        <p>Happy Boyfriend's Day, Harsh. I'm sorry, and I love you so much. ♥</p>
+        <p class="letter-signoff">I love you so much,<br>your forever love ♥</p>
+      </div>
+    </article>
+  </dialog>
+
+  <dialog class="photo-dialog" id="photo-dialog" aria-label="Photo preview">
+    <button class="close-photo" type="button" aria-label="Close photo">×</button>
+    <img id="photo-preview" alt="A photo memory together">
+  </dialog>
+
+  <script>
+    const memories = [
+      { file: "WhatsApp Image 2026-10-01 at 9.03.57 PM.jpeg", caption: "mirror-date cuties", alt: "A mirror selfie together before a date" },
+      { file: "WhatsApp Image 2026-10-01 at 9.03.58 PM (1).jpeg", caption: "our silly faces", alt: "A playful close-up selfie together" },
+      { file: "WhatsApp Image 2026-10-01 at 9.03.58 PM (2).jpeg", caption: "my handsome boy", alt: "A close selfie together in matching warm colors" },
+      { file: "WhatsApp Image 2026-10-01 at 9.03.58 PM.jpeg", caption: "squished together", alt: "A cozy close selfie together" },
+      { file: "WhatsApp Image 2026-10-01 at 9.03.59 PM (1).jpeg", caption: "one more mirror pic", alt: "A mirror photo together at a restaurant" },
+      { file: "WhatsApp Image 2026-10-01 at 9.03.59 PM.jpeg", caption: "date-night smiles", alt: "Sitting close together at a restaurant" },
+      { file: "WhatsApp Image 2026-10-01 at 9.04.00 PM (1).jpeg", caption: "cake tastes sweeter with you", alt: "Celebrating together with a cake" },
+      { file: "WhatsApp Image 2026-10-01 at 9.04.00 PM (2).jpeg", caption: "my kiss thief", alt: "Sharing a kiss outside" },
+      { file: "WhatsApp Image 2026-10-01 at 9.04.00 PM.jpeg", caption: "just us, looking cute", alt: "Sitting together at a restaurant" }
+    ];
+
+    const photoGrid = document.querySelector("#photo-grid");
+    const photoDialog = document.querySelector("#photo-dialog");
+    const photoPreview = document.querySelector("#photo-preview");
+
+    memories.forEach((memory, index) => {
+      const figure = document.createElement("figure");
+      figure.className = "memory reveal";
+      figure.style.transitionDelay = `${(index % 4) * 70}ms`;
+      figure.innerHTML = `<button class="memory-button" type="button" aria-label="View photo: ${memory.caption}"><img src="${memory.file}" alt="${memory.alt}" loading="lazy"></button><figcaption>${memory.caption}</figcaption>`;
+      figure.querySelector("button").addEventListener("click", () => {
+        photoPreview.src = memory.file;
+        photoPreview.alt = memory.alt;
+        photoDialog.showModal();
+      });
+      photoGrid.append(figure);
+    });
+
+    const letterDialog = document.querySelector("#letter-dialog");
+    document.querySelector("#open-letter").addEventListener("click", () => letterDialog.showModal());
+    document.querySelector(".close-letter").addEventListener("click", () => letterDialog.close());
+    document.querySelector(".close-photo").addEventListener("click", () => photoDialog.close());
+
+    [letterDialog, photoDialog].forEach((dialog) => {
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+  </script>
+</body>
+</html>
